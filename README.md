@@ -8,7 +8,7 @@ A comprehensive implementation of statistical learning methods for image classif
 * [Features](#features)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Models & Methods](#models&methods)
+* [Methods](#methods)
 * [Results](#results)
 * [Future Work](#future-work)
 * [License](#license)
@@ -67,48 +67,45 @@ Performance: Predictive < MAP < ML for small datasets; all converge with large d
 * Performance: Optimal at C=8 with ~4% error; C=1,2 fail (>70% error); C=32 overfits
 
 ## Installation
-
+All MATLAB solutions for the course are provided in this repository. Each homework assignment is in its respective file:
+HW1_solution.m
+HW2_solution.m
+HW3_solution.m
+HW5_solution.m
 ```bash
-
+# 1.Clone the repository
+git clone https://github.com/yourusername/ece271a-statistical-learning.git
+cd ece271a-statistical-learning
+# 2. Open Matlab
+# 3. Run the Solution
+    * Navigate to the folder containing the .m files in MATLAB.
+    * Open the desired homework file, e.g., HW1_solution.m.
+    * Click Run to execute the script.
 ```
 
 ## Usage
 
-1. Prepare your dataset in the required format (CSV with sensor parameters).
-2. Run the preprocessing script:
+1. Download the required homework
+2. Run the script as described above
 
-```bash
-python preprocess_data.py
-```
+## Methods
 
-3. Train the machine learning model:
 
-```bash
-python train_model.py
-```
-
-4. Predict activities on new smartwatch data:
-
-```bash
-python predict_activity.py --input new_data.csv
-```
-
-## Models & Methods
-
-* Uses classical machine learning algorithms for activity recognition (e.g., Random Forest, SVM).
-* Input features include sensor readings like acceleration, gyroscope data, and heart rate.
-* Output: Predicted activity label for each timestamp.
 
 ## Results
 
-* Achieved high accuracy when tested on real-world smartwatch data.
-* Model can reliably predict activities such as walking, running, sitting, and more.
+* Dimensionality Paradox: More features ≠ better performance (8D beats 64D without regularization)
+* Prior Informativeness: Class-specific priors significantly outperform neutral priors
+* Initialization Sensitivity: EM is highly sensitive to starting point (~60% of inits fail)
+* Optimal Complexity: C=8 provides best bias-variance tradeoff for GMM
+* Bayesian Benefits: Most pronounced for small datasets; diminish as N grows
 
 ## Future Work
 
-* Expand dataset with more users for better generalization.
-* Explore deep learning models (e.g., LSTM, CNN) for temporal sensor data.
-* Deploy as a real-time smartwatch application for fitness tracking.
+* Deep Learning: Replace hand-crafted DCT features with learned CNN representations
+* Transfer Learning: Extend to other animal/background classification tasks
+* Active Learning: Adaptively select most informative training blocks
+* Ensemble Methods: Combine multiple GMM initializations for robust predictions
 
 ## License
 
