@@ -1,5 +1,5 @@
-# ECE-271A-Statistical-Learing-1
-A machine learning project that predicts the physical activity of smartwatch users based on sensor data. This project demonstrates data aggregation, preprocessing, and predictive modeling for real-world activity recognition.
+# ECE 271A: Statistical Learning & Pattern Recognition 🐆📊
+A comprehensive implementation of statistical learning methods for image classification and pattern recognition. This project demonstrates Bayesian classification, Gaussian mixture models, and advanced machine learning techniques applied to cheetah vs. grass segmentation using DCT features.
 
 ## Table of Contents
 
@@ -8,33 +8,63 @@ A machine learning project that predicts the physical activity of smartwatch use
 * [Features](#features)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Model](#model)
+* [Models & Methods](#models&methods)
 * [Results](#results)
 * [Future Work](#future-work)
 * [License](#license)
 
 ## Project Overview
+This repository contains my solutions to four comprehensive homework assignments from ECE 271A (Statistical Learning 1) at UC San Diego. The project focuses on cheetah vs. grass segmentation using DCT (Discrete Cosine Transform) features extracted from 8×8 image blocks.
 
-This project collects data from smartwatches worn by 30 users and predicts their physical activity using machine learning techniques. The goal is to recognize activities such as walking, running, sitting, or other movements in real-time scenarios.
-
-Key steps include:
-
-* Aggregating large datasets from multiple users.
-* Preprocessing and cleaning noisy sensor data.
-* Analyzing the data to extract meaningful features.
-* Training machine learning models to predict user activity accurately.
+Key implementations include:
+* Histogram-based Bayesian classification with minimum probability of error
+* Multivariate Gaussian models with Maximum Likelihood estimation
+* Bayesian learning with informative priors (MAP and predictive distributions)
+* Gaussian Mixture Models (GMM) trained via Expectation-Maximization (EM)
 
 ## Dataset
-
-* Data collected from ~30 smartwatch users.
-* Includes parameters like accelerometer, gyroscope, heart rate, and other motion sensors.
-* Cleaned and preprocessed to remove noise and inconsistencies.
+* Image Data:
+  * Target: cheetah.bmp (255×270 grayscale image)
+  * Ground truth: cheetah_mask.bmp (binary segmentation mask)
+  * Training samples: DCT coefficients from labeled 8×8 blocks
+* Training Sets:
+  * HW1: 250 cheetah samples, 1053 grass samples (scalar features)
+  * HW2: Full 64-dimensional DCT feature vectors
+  * HW3: Four progressive datasets (D1–D4) with increasing sample sizes
+  * HW4: Same as HW2, used for GMM modeling
+* Feature Representation:
+  * 8×8 DCT blocks → 64 coefficients per block
+  * Zig-zag scanning for consistent ordering
+  * Features range from DC (mean) to high-frequency AC components
 
 ## Features
+**HW1: Histogram-Based Classification**
+* Scalar Feature Extraction: Index of 2nd largest DCT coefficient
+* Bayesian Decision Rule: Minimum probability of error classifier
+* Performance: ~16.81% error rate with single-feature model
 
-* **Data Aggregation:** Combine multi-user smartwatch data into a unified dataset.
-* **Data Preprocessing:** Handle missing values, normalize sensor readings, and extract relevant features.
-* **Activity Prediction:** Model predicts the physical activity of the wearer in real-time scenarios.
+**HW2: Multivariate Gaussian Classification**
+* 64-Dimensional Modeling: Full covariance Gaussian per class
+* Feature Selection: Visual inspection of marginal densities
+* Dimensionality Comparison: 64D vs. best 8D features
+* Performance: 5.52% error (64D), 3.11% error (8D) — demonstrates curse of dimensionality
+
+**HW3: Bayesian Learning with Priors**
+* Three Classification Strategies:
+  * ML (Maximum Likelihood): Baseline with no prior
+  * MAP (Maximum a Posteriori): Point estimate with Gaussian prior
+  * Predictive: Full Bayesian integration over posterior uncertainty
+* Prior Strategies:
+  * Strategy 1: Informative class-specific priors (μ₀=1 for cheetah, μ₀=3 for grass)
+  * Strategy 2: Neutral prior (μ₀=2 for both classes)
+
+Performance: Predictive < MAP < ML for small datasets; all converge with large data
+
+**HW4: Gaussian Mixture Models**
+* EM Algorithm: Diagonal-covariance GMMs trained via iterative optimization
+* Initialization Study: 25 random initializations (5 per class) reveal local optima sensitivity
+* Model Complexity Analysis: C ∈ {1, 2, 4, 8, 16, 32} components
+* Performance: Optimal at C=8 with ~4% error; C=1,2 fail (>70% error); C=32 overfits
 
 ## Installation
 
@@ -72,7 +102,7 @@ python train_model.py
 python predict_activity.py --input new_data.csv
 ```
 
-## Model
+## Models & Methods
 
 * Uses classical machine learning algorithms for activity recognition (e.g., Random Forest, SVM).
 * Input features include sensor readings like acceleration, gyroscope data, and heart rate.
