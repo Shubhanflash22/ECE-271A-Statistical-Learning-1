@@ -89,8 +89,31 @@ cd ece271a-statistical-learning
 2. Run the script as described above
 
 ## Methods
+**HW1 – Histogram-Based Bayesian Classification**
 
+* Extracted scalar features: index of the 2nd largest DCT coefficient from 8×8 blocks.
+* Constructed class-conditional histograms for cheetah and grass.
+* Applied minimum probability of error decision rule (Bayesian classifier).
 
+**HW2 – Multivariate Gaussian Classification**
+
+* Represented each 8×8 DCT block as a 64-dimensional feature vector.
+* Modeled class distributions with multivariate Gaussian (full covariance).
+* Performed dimensionality reduction and feature selection using marginal densities.
+* Compared performance of 64D vs. best 8D features to study the curse of dimensionality.
+
+**HW3 – Bayesian Learning with Priors**
+
+* Implemented three classification strategies: Maximum Likelihood (ML), Maximum a Posteriori (MAP), and Predictive (full Bayesian).
+* Incorporated Gaussian priors with varying informativeness for class-specific mean estimation.
+* Evaluated effect of prior choice on small vs. large datasets.
+
+**HW4 – Gaussian Mixture Models (GMM)**
+
+* Trained diagonal-covariance GMMs using Expectation-Maximization (EM).
+* Studied sensitivity to random initialization (multiple runs per class).
+* Evaluated models with different numbers of components (C = 1, 2, 4, 8, 16, 32) to identify optimal complexity.
+* Compared performance in terms of segmentation error on cheetah_mask.bmp.
 
 ## Results
 
