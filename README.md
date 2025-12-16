@@ -67,11 +67,7 @@ Performance: Predictive < MAP < ML for small datasets; all converge with large d
 * Performance: Optimal at C=8 with ~4% error; C=1,2 fail (>70% error); C=32 overfits
 
 ## Installation
-All MATLAB solutions for the course are provided in this repository. Each homework assignment is in its respective file:
-HW1_solution.m
-HW2_solution.m
-HW3_solution.m
-HW5_solution.m
+All MATLAB solutions for the course are provided in this repository. Each homework assignment is in its respective file: "HWx_solution.m where x can be 1,2,3,5"
 ```bash
 # 1.Clone the repository
 git clone https://github.com/yourusername/ece271a-statistical-learning.git
