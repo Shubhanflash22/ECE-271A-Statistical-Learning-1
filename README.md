@@ -70,7 +70,7 @@ Performance: Predictive < MAP < ML for small datasets; all converge with large d
 All MATLAB solutions for the course are provided in this repository. Each homework assignment is in its respective file: "HWx_solution.m where x can be 1,2,3,5"
 ```bash
 # 1.Clone the repository
-git clone https://github.com/yourusername/ece271a-statistical-learning.git
+git clone https://github.com/yourusername/ECE-271A-Statistical-Learning-1.git
 cd ece271a-statistical-learning
 # 2. Open Matlab
 # 3. Run the Solution
@@ -125,6 +125,19 @@ cd ece271a-statistical-learning
 * Transfer Learning: Extend to other animal/background classification tasks
 * Active Learning: Adaptively select most informative training blocks
 * Ensemble Methods: Combine multiple GMM initializations for robust predictions
+
+## Citation
+
+If you use this work, please cite:
+
+```bibtex
+@software{ECE-271A-Statistical-Learning-1,
+  author = {Shubhan Mital},
+  title = {Statistical Learning 1 HWs},
+  year = {2025},
+  url = {https://github.com/Shubhanflash22/ECE-271A-Statistical-Learning-1.git}
+}
+```
 
 ## License
 
